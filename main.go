@@ -5,9 +5,9 @@ import (
 )
 
 func main() {
-	x := "hello"
-	for _, x := range x {
-		x := x + 'A' - 'a'
-		fmt.Printf("%c", x)
+	a := [5]int{7, 8, 10}
+	for i, v := range a {
+		fmt.Printf("%d %d\n", i, v)
 	}
+	fmt.Printf("hello world")
 }
