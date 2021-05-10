@@ -1,0 +1,13 @@
+# python cache file
+*.pyc
+
+
+# editor diretory and file
+.vs/
+.vscode/
+*.sln
+*.pyproj
+*.pyproj.user
+.idea
+obj/
+.exe
