@@ -2,13 +2,17 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
-func hypot(x, y float64) float64 {
-	return math.Sqrt(x*x + y*y)
-}
-
 func main() {
-	fmt.Println(hypot(3, 4))
+	//	xCapital := make(chan byte)
+	x := "hello!"
+	for i := 0; i < len(x); i++ {
+		x := x[i]
+		if x != '!' {
+			x := x + 'A' - 'a'
+			//			xCapital <- x
+			fmt.Printf("%c", x)
+		}
+	}
 }
