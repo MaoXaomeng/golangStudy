@@ -1,13 +1,29 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	a := [5]int{7, 8, 10}
-	for i, v := range a {
-		fmt.Printf("%d %d\n", i, v)
+	var y []int
+	for i := 0; i < 10; i++ {
+		y = appendInt(y, i)
+		fmt.Printf("%d cap=%d\t%v\n", i, cap(y), y)
+		//		x = y //丢弃x指针
 	}
-	fmt.Printf("hello world")
+}
+
+func appendInt(x []int, y int) []int {
+	var z []int
+	zlen := len(x) + 1
+	if zlen <= cap(x) {
+		z = x[:zlen]
+	} else {
+		zcap := zlen
+		if zcap < 2*len(x) {
+			zcap = 2 * len(x)
+		}
+		z = make([]int, zlen, zcap)
+		copy(z, x)
+	}
+	z[len(x)] = y
+	return z
 }
