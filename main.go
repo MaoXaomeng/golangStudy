@@ -1,10 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	ages := map[string]int{"alice": 31, "charlie": 34}
-	age, ok := ages["bob"]
-	fmt.Printf("%d\t%t", age, ok)
-	fmt.Printf("%d\n", ages["alice"])
+	type Employee struct {
+		ID        int
+		Name      string
+		Address   string
+		DoB       time.Time
+		Position  string
+		Salary    int
+		ManagerID int
+	}
+	var dilbert Employee
+	dilbert.Salary = 80000
+	fmt.Println(dilbert)
 }
