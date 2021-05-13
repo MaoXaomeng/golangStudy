@@ -5,14 +5,16 @@ import (
 )
 
 func main() {
-	f := square
+	f := squares()
 	fmt.Printf("%T\n", f)
-	fmt.Println(f(3))
-	f = negative
-	fmt.Printf("%T\n", f)
-	fmt.Printf("%T", product)
-
+	fmt.Println(f())
+	fmt.Println(f())
+	fmt.Println(f())
 }
-func square(n int) int     { return n * n }
-func negative(n int) int   { return -n }
-func product(m, n int) int { return m * n }
+func squares() func() int {
+	var x int
+	return func() int {
+		x++
+		return x * x
+	}
+}
