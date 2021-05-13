@@ -1,46 +1,15 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
-
-var prereqs = map[string][]string{
-	"algorithms":            {"data structures"},
-	"calculus":              {"linear algebra"},
-	"compilers":             {"data structures", "formal languages", "computer organization"},
-	"data structures":       {"discrete math"},
-	"databases":             {"data structures"},
-	"discrete math":         {"intro to programming"},
-	"networks":              {"operating systems"},
-	"operating systems":     {"data structures", "computer organization"},
-	"programming languages": {"data structures", "computer organization"},
-}
+import "fmt"
 
 func main() {
-	for i, course := range topoSort(prereqs) {
-		fmt.Printf("%d:\t%s\n", i+1, course)
-	}
+	valueList := []int{1, 2, 3, 4, 5, 6}
+	fmt.Println(sum(valueList...))
 }
-
-func topoSort(m map[string][]string) []string {
-	var order []string
-	seen := make(map[string]bool)
-	var visitAll func(items []string)
-	visitAll = func(items []string) {
-		for _, item := range items {
-			if !seen[item] {
-				seen[item] = true
-				visitAll(m[item]) //确保item中的所有依赖都被遍历过，m[item]就是item的依赖，但也可能是nil
-				order = append(order, item)
-			}
-		}
+func sum(vals ...int) int {
+	var total int
+	for _, val := range vals {
+		total += val
 	}
-	var keys []string
-	for key := range m {
-		keys = append(keys, key)
-	}
-	sort.Strings(keys)
-	visitAll(keys)
-	return order
+	return total
 }
