@@ -3,13 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	valueList := []int{1, 2, 3, 4, 5, 6}
-	fmt.Println(sum(valueList...))
+	fmt.Println(double(4))
 }
-func sum(vals ...int) int {
-	var total int
-	for _, val := range vals {
-		total += val
-	}
-	return total
+func double(x int) (result int) {
+	defer func() {
+		result += x
+		fmt.Printf("double(%d) = %d\n", x, result)
+	}()
+	result = x + x
+	return
 }
